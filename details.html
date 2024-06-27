@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <style>
+        body {
+            font-family: 'Padauk', sans-serif; /* Burmese font */
+            background-color: #fafafa; /* Light gray background */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #6a1b9a; /* Deep purple */
+            margin-bottom: 20px;
+        }
+        
+        .subfolder-group {
+            margin-top: 30px;
+        }
+        
+        .subfolder-group h2 {
+            font-size: 2rem;
+            color: #4a148c; /* Purple */
+            margin-bottom: 10px;
+        }
+
+        .subfolder {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        
+        .subfolder h3 {
+            font-size: 1.5rem;
+            color: #4a148c; /* Purple */
+        }
+        
+        .subfolder .content {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="topicTitle">Details</h1>
+        <div id="content"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const topic = params.get('topic');
+
+            if (topic) {
+                document.getElementById('topicTitle').innerText = topic;
+
+                fetch('folders.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const topicData = data.topics[topic];
+                        if (topicData) {
+                            // Sort steps by createdDate and then create grouped content
+                            createGroupedContent(topic, topicData.steps, document.getElementById('content'));
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('content').innerText = 'Error loading topics';
+                    });
+            } else {
+                document.getElementById('content').innerText = 'No topic specified';
+            }
+        });
+
+        function createGroupedContent(topic, steps, container, parentPath = '') {
+            // Group the steps by their parent folder
+            const groups = {};
+            for (const [subfolder, details] of Object.entries(steps)) {
+                if (subfolder !== 'createdDate') {
+                    const parts = subfolder.split('/');
+                    const parent = parts[0];
+
+                    if (!groups[parent]) {
+                        groups[parent] = {};
+                    }
+
+                    const subPath = parts.slice(1).join('/');
+                    if (subPath) {
+                        groups[parent][subPath] = details;
+                    } else {
+                        groups[parent] = details;
+                    }
+                }
+            }
+
+            // Create HTML elements for each group
+            for (const [parent, groupSteps] of Object.entries(groups)) {
+                const groupDiv = document.createElement('div');
+                groupDiv.classList.add('subfolder-group');
+
+                const groupTitle = document.createElement('h2');
+                groupTitle.innerText = parent;
+                groupDiv.appendChild(groupTitle);
+
+                const sortedSteps = Object.entries(groupSteps).sort((a, b) => {
+                    return new Date(a[1].createdDate) - new Date(b[1].createdDate);
+                });
+
+                sortedSteps.forEach(([subfolder, details]) => {
+                    const subfolderDiv = document.createElement('div');
+                    subfolderDiv.classList.add('subfolder');
+
+                    const subfolderTitle = document.createElement('h3');
+                    subfolderTitle.innerText = subfolder;
+                    subfolderDiv.appendChild(subfolderTitle);
+
+                    groupDiv.appendChild(subfolderDiv);
+                });
+
+                container.appendChild(groupDiv);
+            }
+        }
+    </script>
+</body>
+</html>

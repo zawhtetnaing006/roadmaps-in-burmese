@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmaps In Burmese</title>
+    <link href="app.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Roadmaps In Burmese</h1>
+            <p>သင်ခန်းစာတွေကို မြန်မာဘာသာနဲ့ မျှ၀ေကြစို့</p>
+        </div>
+        
+        <ul class="topics-list" id="topicsList"></ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('folders.json')
+                .then(response => response.json())
+                .then(data => {
+                    const topicsList = document.getElementById('topicsList');
+
+                    // Iterate through each topic
+                    for (const topic in data.topics) {
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('topic-item');
+
+                        const link = document.createElement('a');
+                        link.classList.add('topic-link');
+                        link.href = `details.html?topic=${encodeURIComponent(topic)}`;
+                        link.innerHTML = `<i class="topic-icon">&#10029;</i>${topic}`; // Myanmar (Burmese) icon
+                        link.setAttribute('title', `Explore ${topic}`);
+                        
+                        listItem.appendChild(link);
+                        topicsList.appendChild(listItem);
+                    }
+                })
+                .catch(error => console.error('Error fetching topics:', error));
+        });
+    </script>
+</body>
+</html>
