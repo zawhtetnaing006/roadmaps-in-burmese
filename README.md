@@ -1,9 +1,15 @@
 # Roadmaps In Burmese
 
-**Roadmaps In Burmese** ရည်ရွယ်ချက်က  မြန်မာလိုရေးထားတဲ့ content တွေကို structure ကျကျစုစည်းပေးချင်တာပါ.
+**Roadmaps In Burmese** ရည်ရွယ်ချက်က  မြန်မာလိုရေးထားတဲ့ content တွေကို roadmap တစ်ခုလို structure ချပြီးစုစည်းပေးချင်တာပါ.
 
-# How it works?
+## How it works?
 
+### Overview
+**Roadmaps In Burmese** က folder structure  ကနေပြီးတော့ interactive roadmap UI ထုတ်ပေးတဲ့  project  ဖြစ်ပါတယ်။ html, css, js ကိုသုံးထားပြီးတော့ နောက်ကွယ်က အလုပ်လုပ်ပေးနေတဲ့ server  မရှိပါဘူး။ 
+
+### Key Components
+- **gulpfile.js** gulp  ကိုသုံးပြီး folders.json ကို generate ထုတ်လိုက်ပါတယ်။ 
+- **index.html**,**details.html** က folders.json  ကိုသုံးပြီး topics တွေ steps တွေကိုပြန်ပြပေးလိုက်ပါတယ်။
 
 ## Installation
 
@@ -14,7 +20,7 @@
    cd roadmaps-in-burmese
    ```
 
-2. **တစ်ခုခု update ပြီးသွားရင် ဒီ command ကိုရိုက်ပြီး folders.json ကို update လိုက်ပါ**
+2. **ဒီ command ကိုရိုက်ပြီး folders.json ကို generate လိုက်ပါ**
 
    ```
    npx gulp
@@ -57,6 +63,9 @@ Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ## Contact
 
 For questions or suggestions, contact us at [zawhtetnaing006@gmail.com].
+
+## Acknowledgments
+This project is heavily inspired by [roadmap.sh](https://roadmap.sh/). Special thanks to the creators and contributors of roadmap.sh for their amazing work.
 
 ---
 
