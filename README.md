@@ -22,6 +22,8 @@
 
 2. **ဒီ command ကိုရိုက်ပြီး folders.json ကို generate လိုက်ပါ**
 
+တစ်ခုခု update ပြီးသွားတိုင်းလဲ ဒီ command ကိုပြန်ရိုက်ပေးဖို့လိုပါတယ်။ 
+
    ```
    npx gulp
    ```

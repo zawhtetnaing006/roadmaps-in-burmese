@@ -1,0 +1,40 @@
+#content {
+    font-family: Arial, sans-serif;
+}
+
+.step {
+    margin: 10px 0;
+    padding-left: 20px;
+    border-left: 2px solid #000;
+}
+
+.step-content {
+    width:fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.go-back-container {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+}
+
+.arrow-left {
+    width: 0; 
+    height: 0; 
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent; 
+    border-right: 30px solid #6a1b9a;
+}
+
+.go-back-text {
+    margin-left: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6a1b9a;
+}
