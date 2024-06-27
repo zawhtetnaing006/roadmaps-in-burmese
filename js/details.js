@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const topicData = data.topics[topic];
                 if (topicData) {
                     let container = document.getElementById('step-content')
-                    let groups = createGroupedSteps(topicData.steps);
+                    let groups = createGroupedSteps(topicData);
                     container.append(groups)
                 }
             })
