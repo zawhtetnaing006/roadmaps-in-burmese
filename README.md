@@ -40,9 +40,7 @@ Contribute  လုပ်ချင်တဲ့သူအကုန်လုံး�
 1. topics ဆိုတဲ့ folder အောက်မှာ ကိုယ် create ချင်တဲ့ topic နံမည်နဲ့ folder တစ်ခုဆောက်မယ်
 2. ကိုယ် create လိုက်တဲ့ folder ထဲမှာ author.md ဆိုတဲ့ file ကို create မယ်။  author.md ထဲမှာ  ကိုယ့် profile information ကို markdown format နဲ့ထည့်မယ်
 အဲ့ဒီ 2 ခုက မဖြစ်မနေလုပ်ရပါမယ်။ 
-
-ဒီနောက်ဆုံးအဆင့်က optional ပါ။
-3. ကိုယ် create လိုက်တဲ့ folder ထဲမှာ content.md ဆိုတဲ့ file ကို create မယ်။ content.md ထဲမှာ ကိုယ် create လိုက်တဲ့ topic ရဲ့ details ကို ထည့်ပေးလို့ရပါတယ်။ 
+3. ဒီနောက်ဆုံးအဆင့်က optional ပါ။ ကိုယ် create လိုက်တဲ့ folder ထဲမှာ content.md ဆိုတဲ့ file ကို create မယ်။ content.md ထဲမှာ ကိုယ် create လိုက်တဲ့ topic ရဲ့ details ကို ထည့်ပေးလို့ရပါတယ်။ 
 
 ## License
 
